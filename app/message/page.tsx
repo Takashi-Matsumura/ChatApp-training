@@ -67,18 +67,19 @@ export default function ChatPage() {
     const messages = await res.json();
     setmessages(messages);
   };
+
+  const fetchUsers = async () => {
+    const res = await fetch("/api/user");
+    const users = await res.json();
+    console.log(users);
+    setusers(users);
+  };
+
   //GET
   useEffect(() => {
-    const fetchUsers = async () => {
-      const res = await fetch("/api/user", { cache: "no-cache" });
-      const users = await res.json();
-      console.log(users);
-      setusers(users);
-    };
-
     fetchMessages();
     fetchUsers();
-    router.refresh();
+    //router.refresh();
   }, []);
 
   const id = useParams<{ id: string }>().id;
