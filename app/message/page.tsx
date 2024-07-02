@@ -70,8 +70,7 @@ export default function ChatPage() {
   //GET
   useEffect(() => {
     const fetchUsers = async () => {
-      const { signal } = new AbortController();
-      const res = await fetch("/api/user", { signal });
+      const res = await fetch("/api/user", { cache: "no-cache" });
       const users = await res.json();
       console.log(users);
       setusers(users);
