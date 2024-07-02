@@ -99,6 +99,10 @@ export default function ChatPage() {
     }
   };
 
+  const handleReload = () => {
+    fetchUsers();
+  };
+
   return (
     <div className="flex flex-col h-screen">
       <header className="bg-background border-b px-4 py-3 flex items-center justify-between">
@@ -117,6 +121,12 @@ export default function ChatPage() {
         </div>
         <div className="grid">
           <div className="flex">
+            <button
+              onClick={handleReload}
+              className="border bg-black text-white rounded-full px-3"
+            >
+              reload
+            </button>
             <div>
               <select
                 onChange={(event) => {
