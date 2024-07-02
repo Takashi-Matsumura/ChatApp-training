@@ -70,7 +70,8 @@ export default function ChatPage() {
   //GET
   useEffect(() => {
     const fetchUsers = async () => {
-      const res = await fetch("/api/user");
+      const { signal } = new AbortController();
+      const res = await fetch("/api/user", { signal });
       const users = await res.json();
       console.log(users);
       setusers(users);
@@ -139,10 +140,11 @@ export default function ChatPage() {
                 ))}
               </select>
             </div>
-            <span 
-            onClick={handleeditClick}
-            className="text-3xl text-gray-600"
-            title="Edit name">
+            <span
+              onClick={handleeditClick}
+              className="text-3xl text-gray-600"
+              title="Edit name"
+            >
               <MdDriveFileRenameOutline />
             </span>
           </div>
