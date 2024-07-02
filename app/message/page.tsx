@@ -69,7 +69,12 @@ export default function ChatPage() {
   };
 
   const fetchUsers = async () => {
-    const res = await fetch("/api/user");
+    const res = await fetch("/api/user", {
+      method: "GET",
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    });
     const users = await res.json();
     console.log(users);
     setusers(users);
